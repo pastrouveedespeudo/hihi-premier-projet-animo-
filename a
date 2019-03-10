@@ -1,0 +1,129 @@
+import cv2
+from PIL import Image
+
+class cam_cadre:
+    pass
+
+
+class image:
+
+    def noir_blanc(self, image):
+        self.image = image
+
+        img = Image.open(self.image).convert("LA")
+        img = img.resize((100,100))
+        img.save("noir_blanc.png")
+        
+        return "noir_blanc.png"
+
+
+    def ouverture(self, image):
+        self.image = image
+
+        img = cv2.imread(self.image)
+        imgray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+        ret,thresh = cv2.threshold(imgray,127,255,0)
+        im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+
+        gray = cv2.bilateralFilter(im2, 11, 17, 17)
+        edged = cv2.Canny(gray, 30, 200)
+        
+        cv2.imwrite("edged.jpg", edged)
+
+        return "edged.jpg"
+
+
+    def pts_queue(self, image):
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def barre_du_bas_un(self, image):
+        self.image = image
+
+
+        bas_image = Image.open("1.jpg")
+
+        masque = Image.new('RGB', bas_image.size, color=(255,255,255))
+
+        a = bas_image.size[0]
+        b = bas_image.size[1] / 100* 80
+        c = 0
+        d = bas_image.size[1]
+
+        coords = (a,b, c,d)
+   
+        masque_draw = ImageDraw.Draw(masque)
+        masque_draw.rectangle(coords, fill=(0,0,0))
+        diff = ImageChops.lighter(bas_image, masque)
+
+        diff.save("traitement.jpg")
+
+
+
+        img = cv2.imread("traitement.jpg")
+
+        cv2.imshow("yo1.jpg", img)
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+
+
+    notre_image = "queue pts interro.jpg"
+
+    image = image()
+    image_gris = image.noir_blanc(notre_image)
+    edge = image.ouverture(image_gris)
+    image.pts_queue(edge)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
