@@ -9,7 +9,7 @@
 
 #les patounes
 
-#- la queue  ----------------> ouais mais ca marche pour la meme image  oups
+#- la queue  ----------------> ouais mais ca marche pour la meme image et une autre hihihi
 
 #inclinaison de la teté
 
