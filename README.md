@@ -1,6 +1,6 @@
 # hihi-premier-projet-animo-
 
-#on est la pour samuser nik que ce soit pas fragmenter !
+#alors pour des voitures et des panneaux ca marche pas top top mais pour des putins dequeue oui... chui grave fatigué en ce moment ouesh jdois avoir ah mais j'ai pris un trop gros 16h aussi
 
 
 
