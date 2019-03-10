@@ -1,5 +1,8 @@
 import cv2
-from PIL import Image
+from PIL import Image, ImageDraw, ImageChops
+from matplotlib import pyplot as plt
+import numpy as np
+
 
 class cam_cadre:
     pass
@@ -33,55 +36,74 @@ class image:
         return "edged.jpg"
 
 
-    def pts_queue(self, image):
-        pass
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     def barre_du_bas_un(self, image):
         self.image = image
+       
 
+        img = cv2.imread(self.image)
 
-        bas_image = Image.open("1.jpg")
+        y = 0
+        x = 0
+        w = img.shape[0]
+        h = int(round(img.shape[1] / 100*30))
 
-        masque = Image.new('RGB', bas_image.size, color=(255,255,255))
-
-        a = bas_image.size[0]
-        b = bas_image.size[1] / 100* 80
-        c = 0
-        d = bas_image.size[1]
-
-        coords = (a,b, c,d)
-   
-        masque_draw = ImageDraw.Draw(masque)
-        masque_draw.rectangle(coords, fill=(0,0,0))
-        diff = ImageChops.lighter(bas_image, masque)
-
-        diff.save("traitement.jpg")
-
-
-
-        img = cv2.imread("traitement.jpg")
-
-        cv2.imshow("yo1.jpg", img)
+        crop_img = img[y:y+h, x:x+w]
         
+        cv2.imshow("queue.jpg", crop_img)
+        cv2.imwrite("edged.jpg", crop_img)
 
 
 
+    def crop_image_couleur(self):
+        self.image = image
+        
+        img = cv2.imread("queue pts interro.jpg")
+
+        y = 0
+        x = 0
+        w = img.shape[0]
+        h = int(round(img.shape[1] / 100*30))
+
+        crop_img = img[y:y+h, x:x+w]
+        
+        cv2.imshow("queue.jpg", crop_img)
+        cv2.imwrite("crop_couleur.jpg", crop_img)
 
 
 
+    def matches_couleur(self):
+        self.image = image
+        
+        img1 = cv2.imread("crop_couleur.jpg.")
+        img2 = cv2.imread("queue pts interro.jpg",0)
+
+        
+        orb = cv2.ORB_create()
+        
+        kp1, des1 = orb.detectAndCompute(img1,None)
+        kp2, des2 = orb.detectAndCompute(img2,None)
+    
+        bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+       
+        matches = bf.match(des1,des2)
+     
+        matches = sorted(matches, key = lambda x:x.distance)
+     
+        img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:500],10, flags=2)
+        plt.imshow(img3),plt.show()
+     
+
+
+    def pts_queue(self):
+        self.image = image
+
+        img1 = cv2.imread("queue.",0)
+        img2 = cv2.imread("noir_blanc.png",0)
+
+
+        #chercher dans l'image si y'a la présence de l'aisselle du ?
+        #et totues les tailles
 
 
 
@@ -106,10 +128,12 @@ if __name__ == "__main__":
     image = image()
     image_gris = image.noir_blanc(notre_image)
     edge = image.ouverture(image_gris)
-    image.pts_queue(edge)
+    queue = image.barre_du_bas_un(edge)
+    image.pts_queue()
 
 
-
+    image.crop_image_couleur()
+    image.matches_couleur()
 
 
 
