@@ -2,7 +2,7 @@ import cv2
 from PIL import Image, ImageDraw, ImageChops
 from matplotlib import pyplot as plt
 import numpy as np
-
+import os
 
 class cam_cadre:
     pass
@@ -70,35 +70,7 @@ class image:
         cv2.imshow("queue.jpg", crop_img)
         cv2.imwrite("crop_couleur.jpg", crop_img)
 
-
-
-    def matches_couleur(self, crop):
-        self.crop = crop
-        
-        img1 = cv2.imread(self.crop)
-        img2 = cv2.imread("aa.jpg")
-
-        
-        orb = cv2.ORB_create()
-        
-        kp1, des1 = orb.detectAndCompute(img1,None)
-        kp2, des2 = orb.detectAndCompute(img2,None)
-    
-        bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
-       
-        matches = bf.match(des1,des2)
-     
-        matches = sorted(matches, key = lambda x:x.distance)
-
-     
-        img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:500],100, flags=2)
-        
-        plt.imshow(img3),plt.show()
-     
-        c = 0
-        for match in matches:
-            c+=1
-        print(c)
+        return "crop_couleur.jpg"
 
 
 
@@ -183,15 +155,86 @@ class image:
                    m.all() == np.array([255,255,255]).all():
                     print("ouais")
                     
-                
+
+
+                try:
+                                
+                    a = im[10,10]
+                    b = im[10-1,10+1] 
+
+                    c = im[10-1,10+2] 
+                    d = im[10-1,10+3] 
+                    
+                    e = im[10,10+4] 
+
+                    f = im[10+1,10+4]
+                    g = im[10+2,10+4]
+
+                except:
+                    pass
+
+                if a.all() == np.array([255,255,255]).all() and\
+                   b.all() == np.array([255,255,255]).all() and\
+                   c.all() == np.array([255,255,255]).all() and\
+                   d.all() == np.array([255,255,255]).all() and\
+                   e.all() == np.array([255,255,255]).all() and\
+                   f.all() == np.array([255,255,255]).all() and\
+                   g.all() == np.array([255,255,255]).all():
+                    print("ouaisouais")
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #im = cv2.imread("ta.png")
+
+
+        #cv2.imwrite("ta.png", im)
 
 
         
-        
-        #cv2.imshow("yo.png", img1)
+    def matches_toutes_images(self, image):
+        self.image = image
+
+        os.chdir(r"C:\Users\jeanbaptiste\coatis\queue_compa")
+        liste = os.listdir()
+
+        for i in liste:
+            print(i)
         
  
+            img1 = cv2.imread(self.image)
+            img2 = cv2.imread(i)
+
+            
+            orb = cv2.ORB_create()
+            
+            kp1, des1 = orb.detectAndCompute(img1,None)
+            kp2, des2 = orb.detectAndCompute(img2,None)
         
+            bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+           
+            matches = bf.match(des1,des2)
+         
+            matches = sorted(matches, key = lambda x:x.distance)
+
+         
+            img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:500],100, flags=2)
+            
+            plt.imshow(img3),plt.show()
+         
+            c = 0
+            for match in matches:
+                c+=1
+            print(c)
 
      
         
@@ -212,27 +255,32 @@ class image:
 if __name__ == "__main__":
 
 
-    notre_image = "queue pts interro3.jpg"
-    notre_crop = "crop_couleur.jpg"
-    notre_edge = "edged.jpg"
+    notre_image = "queue pts interro11.jpg"
+
+
 
     image = image()
+    
     image_gris = image.noir_blanc(notre_image)
     edge = image.ouverture(image_gris)
+    
     queue = image.recadrage_haut_queue(edge)
+
+    
+    crop_couleur = image.crop_image_couleur(notre_image)
     
 
-
-    image.crop_image_couleur(notre_image)
-    image.matches_couleur(notre_crop)
-
-    image.pts_queue(notre_edge)
+    image.pts_queue(edge)
 
 
 
+    image_ref = "crop_couleur.jpg"
+    image.matches_toutes_images(image_ref)
 
 
+#4 * 2 heures de millénium plus tout django ca ta cassé plus le truk de la pluie bordel
 
+#activation du parasympa et boom toute la journée t'es fatigué
 
 
 
