@@ -20,6 +20,7 @@ class image:
         return "noir_blanc.png"
 
 
+
     def ouverture(self, image):
         self.image = image
 
@@ -40,7 +41,6 @@ class image:
     def barre_du_bas_un(self, image):
         self.image = image
        
-
         img = cv2.imread(self.image)
 
         y = 0
@@ -75,8 +75,8 @@ class image:
     def matches_couleur(self):
         self.image = image
         
-        img1 = cv2.imread("crop_couleur.jpg.")
-        img2 = cv2.imread("queue pts interro.jpg",0)
+        img1 = cv2.imread("crop_couleur.jpg")
+        img2 = cv2.imread("aa.jpg")
 
         
         orb = cv2.ORB_create()
@@ -89,17 +89,76 @@ class image:
         matches = bf.match(des1,des2)
      
         matches = sorted(matches, key = lambda x:x.distance)
+
      
-        img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:500],10, flags=2)
+        img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:500],100, flags=2)
+        
         plt.imshow(img3),plt.show()
      
+        c = 0
+        for match in matches:
+            c+=1
+        print(c)
+
+
 
 
     def pts_queue(self):
-        self.image = image
+        #self.image = image
 
-        img1 = cv2.imread("queue.",0)
-        img2 = cv2.imread("noir_blanc.png",0)
+        img1 = cv2.imread("queue.png")
+
+
+        for x in range(img1.shape[0]):
+            for y in range(img1.shape[1]):
+                try:
+                    a = img1[x,y] 
+             
+                    b = img1[x-1,y] 
+                    c = img1[x-2,y] 
+
+                    d = img1[x-3,y+1] 
+                    
+                    e = img1[x-4,y+2]
+                    f = img1[x-4,y+3] 
+                    g = img1[x-4,y+4]
+                    h = img1[x-3,y+4]
+                    i = img1[x-2,y+5] 
+
+                    j = img1[x-4,y+4] 
+                    
+                    k = img1[x-3,y+4]
+                    
+                    l = img1[x-1,y+5] 
+                    m = img1[x,y+5]
+                    
+                except:
+                    pass
+                    #pts trop loin
+
+                if a.all() == np.array([255,255,255]).all() and\
+                   b.all() == np.array([255,255,255]).all() and\
+                   c.all() == np.array([255,255,255]).all() and\
+                   d.all() == np.array([255,255,255]).all() and\
+                   e.all() == np.array([255,255,255]).all() and\
+                   f.all() == np.array([255,255,255]).all() and\
+                   g.all() == np.array([255,255,255]).all() and\
+                   h.all() == np.array([255,255,255]).all() and\
+                   i.all() == np.array([255,255,255]).all() and\
+                   j.all() == np.array([255,255,255]).all() and\
+                   k.all() == np.array([255,255,255]).all() and\
+                   l.all() == np.array([255,255,255]).all() and\
+                   m.all() == np.array([255,255,255]).all():
+                    print("oui")
+
+
+
+
+        #faire plein de fois ca
+        
+        cv2.imshow("yo.png", img1)
+        
+
 
 
         #chercher dans l'image si y'a la présence de l'aisselle du ?
