@@ -10,7 +10,7 @@ class cam_cadre:
 
 class image:
 
-    def noir_blanc(self, image):
+    def noir_blanc(self, image):#on change la taille de l'image ! et noir et blanc
         self.image = image
 
         img = Image.open(self.image).convert("LA")
@@ -38,7 +38,7 @@ class image:
 
 
 
-    def barre_du_bas_un(self, image):
+    def recadrage_haut_queue(self, image):
         self.image = image
        
         img = cv2.imread(self.image)
@@ -55,10 +55,10 @@ class image:
 
 
 
-    def crop_image_couleur(self):
+    def crop_image_couleur(self, image):
         self.image = image
         
-        img = cv2.imread("queue pts interro.jpg")
+        img = cv2.imread(self.image)
 
         y = 0
         x = 0
@@ -72,10 +72,10 @@ class image:
 
 
 
-    def matches_couleur(self):
-        self.image = image
+    def matches_couleur(self, crop):
+        self.crop = crop
         
-        img1 = cv2.imread("crop_couleur.jpg")
+        img1 = cv2.imread(self.crop)
         img2 = cv2.imread("aa.jpg")
 
         
@@ -103,17 +103,17 @@ class image:
 
 
 
-    def pts_queue(self):
-        #self.image = image
+    def pts_queue(self, edge):
+        self.edge = edge
 
-        img1 = cv2.imread("queue.png")
-
-
+        img1 = cv2.imread(edge)
+  
         for x in range(img1.shape[0]):
             for y in range(img1.shape[1]):
+                
                 try:
                     a = img1[x,y] 
-             
+
                     b = img1[x-1,y] 
                     c = img1[x-2,y] 
 
@@ -150,21 +150,51 @@ class image:
                    l.all() == np.array([255,255,255]).all() and\
                    m.all() == np.array([255,255,255]).all():
                     print("oui")
+                
+
+                try:
+                    a = im[x,y]
+                    b = im[x-1,y]
+
+                    c = im[x-2,y+1] 
+                    
+                    d = im[x-2,y+2] 
+                    e = im[x-2,y+3] 
+                    
+                    f = im[x-1,y+3] 
+                    g = im[x,y+3] 
+                    h = im[x+1,y+3]
+                    
+                except:
+                    pass
+                        
+                if a.all() == np.array([255,255,255]).all() and\
+                   b.all() == np.array([255,255,255]).all() and\
+                   c.all() == np.array([255,255,255]).all() and\
+                   d.all() == np.array([255,255,255]).all() and\
+                   e.all() == np.array([255,255,255]).all() and\
+                   f.all() == np.array([255,255,255]).all() and\
+                   g.all() == np.array([255,255,255]).all() and\
+                   h.all() == np.array([255,255,255]).all() and\
+                   i.all() == np.array([255,255,255]).all() and\
+                   j.all() == np.array([255,255,255]).all() and\
+                   k.all() == np.array([255,255,255]).all() and\
+                   l.all() == np.array([255,255,255]).all() and\
+                   m.all() == np.array([255,255,255]).all():
+                    print("ouais")
+                    
+                
 
 
-
-
-        #faire plein de fois ca
         
-        cv2.imshow("yo.png", img1)
+        
+        #cv2.imshow("yo.png", img1)
+        
+ 
         
 
-
-
-        #chercher dans l'image si y'a la présence de l'aisselle du ?
-        #et totues les tailles
-
-
+     
+        
 
 
 
@@ -182,19 +212,21 @@ class image:
 if __name__ == "__main__":
 
 
-    notre_image = "queue pts interro.jpg"
+    notre_image = "queue pts interro3.jpg"
+    notre_crop = "crop_couleur.jpg"
+    notre_edge = "edged.jpg"
 
     image = image()
     image_gris = image.noir_blanc(notre_image)
     edge = image.ouverture(image_gris)
-    queue = image.barre_du_bas_un(edge)
-    image.pts_queue()
+    queue = image.recadrage_haut_queue(edge)
+    
 
 
-    image.crop_image_couleur()
-    image.matches_couleur()
+    image.crop_image_couleur(notre_image)
+    image.matches_couleur(notre_crop)
 
-
+    image.pts_queue(notre_edge)
 
 
 
