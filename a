@@ -78,7 +78,7 @@ class image:
     def pts_queue(self, edge):
         self.edge = edge
 
-        img1 = cv2.imread(edge)
+        img1 = cv2.imread("edged.jpg")
   
         for x in range(img1.shape[0]):
             for y in range(img1.shape[1]):
@@ -104,13 +104,13 @@ class image:
                     l = img1[x-1,y+5] 
                     m = img1[x,y+5]
 
-                    n = img1[x+1,y+5] = 0,0,255
-                    o = img1[x+2,y+5] = 0,0,255
-                    p = img1[x+3,y+5] = 0,0,255
-                    q = img1[x+4,y+5] = 0,0,255
-                    r = img1[x+5,y+5] = 0,0,255
-                    s = img1[x+6,y+5] = 0,0,255
-                    t = img1[x+7,y+5] = 0,0,255
+                    n = img1[x+1,y+5] 
+                    o = img1[x+2,y+5]
+                    p = img1[x+3,y+5] 
+                    q = img1[x+4,y+5]
+                    r = img1[x+5,y+5] 
+                    s = img1[x+6,y+5]
+                    t = img1[x+7,y+5]
                                         
                 except:
                     pass
@@ -137,36 +137,39 @@ class image:
                    s.all() == np.array([255,255,255]).all() and\
                    t.all() == np.array([255,255,255]).all():
                     print("oui")
-                
+
+                    
+        for x in range(img1.shape[0]):
+            for y in range(img1.shape[1]):              
  
                 try:
+                
+                    a = img1[x,y]
+                    b = img1[x-1,y] 
+
+                    c = img1[x-2,y+1] 
+
+                    d = img1[x-2,y+2] 
+                    e = img1[x-2,y+3]  
+
+                    f = img1[x-1,y+3]  
+                    g = img1[x,y+3]  
+                    h = img1[x+1,y+3] 
+
+
+                    m = img1[x+2,y+4] 
+                    n = img1[x+2,y+5] 
+                    o = img1[x+1,y+5] 
+
+                    p = img1[x+3,y-3] 
+
+                    q = img1[x+2,y-2] 
+                    r = img1[x+2,y-1] 
+                    s = img1[x+1,y-1]
                     
-                    l = im[x+3,y-3] 
-
-                    k = im[x+2,y-2] 
-                    j = im[x+2,y-1] 
-                    i = im[x+1,y-1] 
-
-                    a = im[x,y]
-                    b = im[x-1,y] 
-
-                    c = im[x-2,y+1] 
-
-                    d = im[x-2,y+2] 
-                    e = im[x-2,y+3]  
-
-                    f = im[x-1,y+3]  
-                    g = im[x,y+3]  
-                    h = im[x+1,y+3] 
-
-
-                    m = im[x+2,y+4] 
-                    n = im[x+2,y+5] 
-                    o = im[x+1,y+5] 
-
-
                 except:
                     pass
+           
                         
                 if a.all() == np.array([255,255,255]).all() and\
                    b.all() == np.array([255,255,255]).all() and\
@@ -176,37 +179,37 @@ class image:
                    f.all() == np.array([255,255,255]).all() and\
                    g.all() == np.array([255,255,255]).all() and\
                    h.all() == np.array([255,255,255]).all() and\
-                   i.all() == np.array([255,255,255]).all() and\
-                   j.all() == np.array([255,255,255]).all() and\
-                   k.all() == np.array([255,255,255]).all() and\
-                   l.all() == np.array([255,255,255]).all() and\
                    m.all() == np.array([255,255,255]).all() and\
                    n.all() == np.array([255,255,255]).all() and\
-                   o.all() == np.array([255,255,255]).all():
+                   o.all() == np.array([255,255,255]).all() and\
+                   q.all() == np.array([255,255,255]).all() and\
+                   r.all() == np.array([255,255,255]).all() and\
+                   s.all() == np.array([255,255,255]).all():
                     print("ouais")
-                    
+                            
 
-
+        for x in range(img1.shape[0]):
+            for y in range(img1.shape[1]):
                 try:
                                 
-                    i = im[x+1,y-2] 
-                    h = im[x+1,y-1] 
 
-                    a = im[x,y] 
-                    b = im[x-1,y+1]  
+                    a = img1[x,y] 
+                    b = img1[x-1,y+1]  
 
-                    c = im[x-1,y+2]  
-                    d = im[x-1,y+3]  
+                    c = img1[x-1,y+2]  
+                    d = img1[x-1,y+3]  
 
-                    e = im[x,y+4]  
+                    e = img1[x,y+4]  
 
-                    f = im[x+1,y+4] 
-                    g = im[x+2,y+4] 
-
-                    j = im[x+3,y+4] 
-                    k = im[x+4,y+4] 
-                    l = im[x+5,y+4] 
-                    m = im[x+6,y+4] 
+                    f = img1[x+1,y+4] 
+                    g = img1[x+2,y+4] 
+                     
+                    h = img1[x+1,y-1]
+                    i = img1[x+1,y-2]
+                    j = img1[x+3,y+4] 
+                    k = img1[x+4,y+4] 
+                    l = img1[x+5,y+4] 
+                    m = img1[x+6,y+4] 
 
                 except:
                     pass
@@ -226,44 +229,47 @@ class image:
                    m.all() == np.array([255,255,255]).all():
                     print("ouaisouais")
 
+                    
+        for x in range(img1.shape[0]):
+            for y in range(img1.shape[1]):
 
                 try:
-                    a = im[x,y] 
-                    b = im[x+1,y] 
+                    a = img1[x,y] 
+                    b = img1[x+1,y] 
 
-                    c = im[x+1,y-1]
-                    d = im[x+2,y-1] 
-
-
-                    e = im[x-1,y+1] 
-                    f = im[x-2,y+1] 
-
-                    g = im[x-3,y+2] 
-
-                    h = im[x-4,y+3] 
-                    i = im[x-4,y+4]
-                    j = im[x-4,y+5] 
-
-                    k = im[x-5,y+5]
-                    l = im[x-5,y+6] 
-                    m = im[x-5,y+7]
-
-                    n = im[x-4,y+7] 
+                    c = img1[x+1,y-1]
+                    d = img1[x+2,y-1] 
 
 
-                    o = im[x-4,y+8] 
-                    p = im[x-3,y+9]
-                    q = im[x-2,y+9]
+                    e = img1[x-1,y+1] 
+                    f = img1[x-2,y+1] 
+
+                    g = img1[x-3,y+2] 
+
+                    h = img1[x-4,y+3] 
+                    i = img1[x-4,y+4]
+                    j = img1[x-4,y+5] 
+
+                    k = img1[x-5,y+5]
+                    l = img1[x-5,y+6] 
+                    m = img1[x-5,y+7]
+
+                    n = img1[x-4,y+7] 
 
 
-                    r = im[x-3,y+9] 
+                    o = img1[x-4,y+8] 
+                    p = img1[x-3,y+9]
+                    q = img1[x-2,y+9]
 
-                    s = im[x-1,y+10]
 
-                    t = im[x,y+10] 
-                    u = im[x+1,y+10] 
-                    v = im[x+2,y+10] 
-                    w = im[x+3,y+10]
+                    r = img1[x-3,y+9] 
+
+                    s = img1[x-1,y+10]
+
+                    t = img1[x,y+10] 
+                    u = img1[x+1,y+10] 
+                    v = img1[x+2,y+10] 
+                    w = img1[x+3,y+10]
 
                 except:
                     pass
@@ -331,9 +337,9 @@ class image:
             matches = sorted(matches, key = lambda x:x.distance)
 
          
-            img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:500],100, flags=2)
+            #img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:500],100, flags=2)
             
-            plt.imshow(img3),plt.show()
+            #plt.imshow(img3),plt.show()
          
             c = 0
             for match in matches:
@@ -359,7 +365,7 @@ class image:
 if __name__ == "__main__":
 
 
-    notre_image = "queue pts interro.jpg"
+    notre_image = "queue pts interro3.jpg"
 
 
 
