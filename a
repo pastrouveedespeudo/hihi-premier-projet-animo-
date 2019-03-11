@@ -103,7 +103,15 @@ class image:
                     
                     l = img1[x-1,y+5] 
                     m = img1[x,y+5]
-                    
+
+                    n = img1[x+1,y+5] = 0,0,255
+                    o = img1[x+2,y+5] = 0,0,255
+                    p = img1[x+3,y+5] = 0,0,255
+                    q = img1[x+4,y+5] = 0,0,255
+                    r = img1[x+5,y+5] = 0,0,255
+                    s = img1[x+6,y+5] = 0,0,255
+                    t = img1[x+7,y+5] = 0,0,255
+                                        
                 except:
                     pass
                     #pts trop loin
@@ -120,23 +128,43 @@ class image:
                    j.all() == np.array([255,255,255]).all() and\
                    k.all() == np.array([255,255,255]).all() and\
                    l.all() == np.array([255,255,255]).all() and\
-                   m.all() == np.array([255,255,255]).all():
+                   m.all() == np.array([255,255,255]).all() and\
+                   n.all() == np.array([255,255,255]).all() and\
+                   o.all() == np.array([255,255,255]).all() and\
+                   p.all() == np.array([255,255,255]).all() and\
+                   q.all() == np.array([255,255,255]).all() and\
+                   r.all() == np.array([255,255,255]).all() and\
+                   s.all() == np.array([255,255,255]).all() and\
+                   t.all() == np.array([255,255,255]).all():
                     print("oui")
                 
-
+ 
                 try:
+                    
+                    l = im[x+3,y-3] 
+
+                    k = im[x+2,y-2] 
+                    j = im[x+2,y-1] 
+                    i = im[x+1,y-1] 
+
                     a = im[x,y]
-                    b = im[x-1,y]
+                    b = im[x-1,y] 
 
                     c = im[x-2,y+1] 
-                    
+
                     d = im[x-2,y+2] 
-                    e = im[x-2,y+3] 
-                    
-                    f = im[x-1,y+3] 
-                    g = im[x,y+3] 
-                    h = im[x+1,y+3]
-                    
+                    e = im[x-2,y+3]  
+
+                    f = im[x-1,y+3]  
+                    g = im[x,y+3]  
+                    h = im[x+1,y+3] 
+
+
+                    m = im[x+2,y+4] 
+                    n = im[x+2,y+5] 
+                    o = im[x+1,y+5] 
+
+
                 except:
                     pass
                         
@@ -152,23 +180,33 @@ class image:
                    j.all() == np.array([255,255,255]).all() and\
                    k.all() == np.array([255,255,255]).all() and\
                    l.all() == np.array([255,255,255]).all() and\
-                   m.all() == np.array([255,255,255]).all():
+                   m.all() == np.array([255,255,255]).all() and\
+                   n.all() == np.array([255,255,255]).all() and\
+                   o.all() == np.array([255,255,255]).all():
                     print("ouais")
                     
 
 
                 try:
                                 
-                    a = im[10,10]
-                    b = im[10-1,10+1] 
+                    i = im[x+1,y-2] 
+                    h = im[x+1,y-1] 
 
-                    c = im[10-1,10+2] 
-                    d = im[10-1,10+3] 
-                    
-                    e = im[10,10+4] 
+                    a = im[x,y] 
+                    b = im[x-1,y+1]  
 
-                    f = im[10+1,10+4]
-                    g = im[10+2,10+4]
+                    c = im[x-1,y+2]  
+                    d = im[x-1,y+3]  
+
+                    e = im[x,y+4]  
+
+                    f = im[x+1,y+4] 
+                    g = im[x+2,y+4] 
+
+                    j = im[x+3,y+4] 
+                    k = im[x+4,y+4] 
+                    l = im[x+5,y+4] 
+                    m = im[x+6,y+4] 
 
                 except:
                     pass
@@ -179,10 +217,82 @@ class image:
                    d.all() == np.array([255,255,255]).all() and\
                    e.all() == np.array([255,255,255]).all() and\
                    f.all() == np.array([255,255,255]).all() and\
-                   g.all() == np.array([255,255,255]).all():
+                   g.all() == np.array([255,255,255]).all() and\
+                   h.all() == np.array([255,255,255]).all() and\
+                   i.all() == np.array([255,255,255]).all() and\
+                   j.all() == np.array([255,255,255]).all() and\
+                   k.all() == np.array([255,255,255]).all() and\
+                   l.all() == np.array([255,255,255]).all() and\
+                   m.all() == np.array([255,255,255]).all():
                     print("ouaisouais")
 
 
+                try:
+                    a = im[x,y] 
+                    b = im[x+1,y] 
+
+                    c = im[x+1,y-1]
+                    d = im[x+2,y-1] 
+
+
+                    e = im[x-1,y+1] 
+                    f = im[x-2,y+1] 
+
+                    g = im[x-3,y+2] 
+
+                    h = im[x-4,y+3] 
+                    i = im[x-4,y+4]
+                    j = im[x-4,y+5] 
+
+                    k = im[x-5,y+5]
+                    l = im[x-5,y+6] 
+                    m = im[x-5,y+7]
+
+                    n = im[x-4,y+7] 
+
+
+                    o = im[x-4,y+8] 
+                    p = im[x-3,y+9]
+                    q = im[x-2,y+9]
+
+
+                    r = im[x-3,y+9] 
+
+                    s = im[x-1,y+10]
+
+                    t = im[x,y+10] 
+                    u = im[x+1,y+10] 
+                    v = im[x+2,y+10] 
+                    w = im[x+3,y+10]
+
+                except:
+                    pass
+
+
+                if a.all() == np.array([255,255,255]).all() and\
+                   b.all() == np.array([255,255,255]).all() and\
+                   c.all() == np.array([255,255,255]).all() and\
+                   d.all() == np.array([255,255,255]).all() and\
+                   e.all() == np.array([255,255,255]).all() and\
+                   f.all() == np.array([255,255,255]).all() and\
+                   g.all() == np.array([255,255,255]).all() and\
+                   h.all() == np.array([255,255,255]).all() and\
+                   i.all() == np.array([255,255,255]).all() and\
+                   j.all() == np.array([255,255,255]).all() and\
+                   k.all() == np.array([255,255,255]).all() and\
+                   l.all() == np.array([255,255,255]).all() and\
+                   m.all() == np.array([255,255,255]).all() and\
+                   n.all() == np.array([255,255,255]).all() and\
+                   o.all() == np.array([255,255,255]).all() and\
+                   p.all() == np.array([255,255,255]).all() and\
+                   q.all() == np.array([255,255,255]).all() and\
+                   r.all() == np.array([255,255,255]).all() and\
+                   s.all() == np.array([255,255,255]).all() and\
+                   t.all() == np.array([255,255,255]).all() and\
+                   u.all() == np.array([255,255,255]).all() and\
+                   v.all() == np.array([255,255,255]).all() and\
+                   w.all() == np.array([255,255,255]).all():
+                    print("mouaismouais")
 
 
 
@@ -192,12 +302,6 @@ class image:
 
 
 
-
-
-        #im = cv2.imread("ta.png")
-
-
-        #cv2.imwrite("ta.png", im)
 
 
         
@@ -255,7 +359,7 @@ class image:
 if __name__ == "__main__":
 
 
-    notre_image = "queue pts interro11.jpg"
+    notre_image = "queue pts interro.jpg"
 
 
 
@@ -278,9 +382,7 @@ if __name__ == "__main__":
     image.matches_toutes_images(image_ref)
 
 
-#4 * 2 heures de millénium plus tout django ca ta cassé plus le truk de la pluie bordel
 
-#activation du parasympa et boom toute la journée t'es fatigué
 
 
 
