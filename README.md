@@ -1,6 +1,6 @@
 # hihi-premier-projet-animo-
 
-#alors pour des voitures et des panneaux ca marche pas top top mais pour des putins dequeue oui... chui grave fatigué en ce moment ouesh jdois avoir ah mais j'ai pris un trop gros 16h aussi
+#par conrre heroku c'est beaucoup trop difficile... c comme git j'avais blocké dessus pas grave j'ai bientot anaconda mais faut que jfinisse ca OU que jattend que je sois dans un appart pour pouvoir reciter ouais jvai faire ca la faut que jme focus sur les koali et heroku
 
 
 
