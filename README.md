@@ -1,6 +1,6 @@
 # hihi-premier-projet-animo-
 
-#par conrre heroku c'est beaucoup trop difficile... c comme git j'avais blocké dessus pas grave j'ai bientot anaconda mais faut que jfinisse ca OU que jattend que je sois dans un appart pour pouvoir reciter ouais jvai faire ca la faut que jme focus sur les koali et heroku
+#ok j'ai la gerbe, faut que je sache faire les reseau neuronaux jvai pas me taêr 10 000 image comme ca en plus les x et y sont trop zarb mais au pire y'a pleins de matches donc...
 
 
 
