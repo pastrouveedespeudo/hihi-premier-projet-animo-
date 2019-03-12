@@ -2,12 +2,11 @@ import os
 import cv2
 import time
 import shutil
+from conteneur_de_liste import *
 import numpy as np
 from PIL import Image, ImageDraw, ImageChops
 
-#--GARDE TOUT LE PLUS EN GROS FAUT GENERALISER sinon pour la suite ca marchera pas
-#tenserflow, hiroku me nique ma journée c fdp ? c enculé veulent pas sinstaller ben jvai faire moi meme
-#mon reseau dossier neuronal mais pas avant davoir pris un encas
+
 
 class image:
 
@@ -98,11 +97,29 @@ class image:
     #edged
 
 
+    def liste_conteneur(self):
+        nos_listes = conteneur.conteneur(self)
+        print(nos_listes)
 
+
+    def fin(self, path):
+        self.path = path
+        
+        os.chdir(self.path)
+        liste = os.listdir()
+
+        for i in liste:
+            os.remove(i)
 
 if __name__ == "__main__":
 
+
+    liste_position = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
+                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+
+
     image = image()
+
 
     image.transformation(r"C:\Users\jeanbaptiste\coatis\images",
                          r"C:\Users\jeanbaptiste\coatis\edge1")
@@ -116,30 +133,34 @@ if __name__ == "__main__":
     os.chdir(r"C:\Users\jeanbaptiste\coatis\edge1")
     liste_dossier = os.listdir()
 
-    liste_position = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[]]
 
     c = 0
     for i in liste_dossier:
+
+        
         pos_im = image.recup_pixel(i)
         liste_position[c].append(pos_im)
-
-        c+=1
-        
     
 
-    for i in liste_position:
-        if i == []:
-            pass
-        else:
-            print(liste_position)
+        c+=1
+
+
+
+
+    image.liste_conteneur()
+    
+
+    image.fin(r"C:\Users\jeanbaptiste\coatis\edge1")
+    image.fin(r"C:\Users\jeanbaptiste\coatis\couleur1")
+        
+
 
 
     #okokok pleins de dossier de chat
             #un chat, si y'a un ensemble de meme pixel on laisse
             #sinon on efface
     #faut creer des dossier auto de egede 
- 
+     
 
 
 
