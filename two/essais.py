@@ -30,27 +30,8 @@ class yo :
 
 if __name__ == "__main__":
     
-    liste_position = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+    liste_position = [[],[]]
 
-    liste_liaison = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                     [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
-                      [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
 
     yo = yo()
    
@@ -58,55 +39,43 @@ if __name__ == "__main__":
     liste_dossier = os.listdir()
 
 
-    c = 0
-    for i in liste_dossier:
-        
-        pos_im=yo.recup_pixel(i)
-        liste_position[c].append(pos_im)
-        c+=1
 
+        
+    pos_im=yo.recup_pixel(liste_dossier[0])
+    liste_position.append(pos_im)
+       
+    pos_im=yo.recup_pixel(liste_dossier[1])
+    liste_position.append(pos_im)
     
 
-    x1 = 0
-    y1 = 0
-    liste_c = 0
-    for i in liste_position:
-        if i == []:
+    print(liste_position[-1])
+    print(liste_position[-2])
+
+
+    com = 0
+    for i in liste_position[-1]:
+        com+=1
+
+    print(com)
+    oyé = 0
+    c=0
+    while oyé < com:
+        for i in liste_position[-1]:
+      
+            #print("(", liste_position[-1][c][0], liste_position[-1][c][1], ")",  i[0], i[1])
             pass
-        else:
-        
-            liste = []
 
-            d=0
-            for j in i[0]:
-        
-                a = i[0][x1][0]
-                b = i[0][y1][1]
-             
-                
-                aa = a + j[0]
-                bb = b + j[1]
+        c+=1
 
-
-                liste.append((aa,bb))
-
-                d+=1
-     
-            liste_liaison[liste_c].append(liste)
-
-            
-            x1+=1
-            y1+=1
-            liste_c += 1
-
-       
-
-    print(liste_liaison)
+    oyé +=1
+    print(oyé)
 
 
 
+#trouve un autre truk c trop long
 
 
+#ok c impossible c tj pas fini alors pour 25 images c mort, bon ben chai pas
 
 
 
