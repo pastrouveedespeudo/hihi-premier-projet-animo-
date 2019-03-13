@@ -141,7 +141,21 @@ class yo :
       
         cv2.imwrite("recup3.png", im)
 
-    def dodo       
+    def rouge_vers_noir(self):
+        im = cv2.imread("recup3.png")
+        for x in range(im.shape[0]):
+            for y in range(im.shape[1]):
+                if im[x,y][0] == 0 and im[x,y][1] == 0 and im[x,y][2] == 255:
+                    im[x,y] = 0,0,0
+
+        cv2.imwrite("recup3.png", im)
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     
@@ -157,9 +171,8 @@ if __name__ == "__main__":
     yo.grigri(pos_im,liste_dossier[0])
     yo.obtenir_pts_blanc()
     yo.zone_rouge()
+    yo.rouge_vers_noir()
 
-#bon a la base je voulais ca mais je comprend pas comment ca se fait qu'il est 4 petit pts blanc au milieu voir si ca marche
-#avec toutes les images... et pk y'a des pts blanc qu ireste
 
 
 
