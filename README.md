@@ -1,8 +1,6 @@
 # hihi-premier-projet-animo-
 
-#le but c que tu trouves des memes schema de pts mais fais le quavec deux images du con et... jcrois ca va etre tres looooong... ensuite comparer ca avec les autres images 
-
-#bouaaaaa mais ouesh heroku de merde tenserflow encore pire, tu crois tu l'as et non enfaite, pareil avec anaconda de merde jcrois faut qujarette dinstaller nimporte quoi
+#hiroku ca me les casses, et trouvé 4 points sur la meme ligne au lieu de dire trouvé toutes les relations d'une image afin de trouver un shéma récurrent c moins classe... par conte chui content du conteneur ca jvai le garder !!
 
 #les yeux
 
