@@ -24,13 +24,64 @@ class yo :
                    
                     occurence.append((x,y))
 
-
+        im[7,104] = 255,0,255
+        im[7,105] = 255,0,255
+        im[7,106] = 255,0,255
+        im[7,107] = 255,0,255
+        cv2.imshow("ypo.jpg", im)
         return occurence
+
+
+
+
+
+
+    def grigri(self, truk):
+        self.truk = truk
+        
+        a=conteneur.conteneur(self)
+                
+        liste = []
+        liste.append(self.truk)
+        
+        rangée = 0
+        
+
+        x = 0
+
+        for i in liste[0]:
+            try:
+                if liste[0][x][0] != liste[0][x+1][0]:
+                    rangée+=1
+            
+                a[1][rangée].append(i)
+            except:
+                pass
+            finally:
+                x+=1
+               
+            
+
+        print(a[1][0])
+        print(a[1][1])  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
     
-    liste_position = [[],[]]
+
 
 
     yo = yo()
@@ -40,42 +91,55 @@ if __name__ == "__main__":
 
 
 
-        
     pos_im=yo.recup_pixel(liste_dossier[0])
-    liste_position.append(pos_im)
-       
-    pos_im=yo.recup_pixel(liste_dossier[1])
-    liste_position.append(pos_im)
-    
-
-    print(liste_position[-1])
-    print(liste_position[-2])
+    yo.grigri(pos_im)
 
 
-    com = 0
-    for i in liste_position[-1]:
-        com+=1
+#soit tu prends la premier pos et ensuite tu cherches liaison par fraction
 
-    print(com)
-    oyé = 0
-    c=0
-    while oyé < com:
-        for i in liste_position[-1]:
-      
-            #print("(", liste_position[-1][c][0], liste_position[-1][c][1], ")",  i[0], i[1])
-            pass
+#soit tu cherches la queue cad une droite mais y'a pas toujours
 
-        c+=1
+#soit tu cherches le pont mais c pas tj le meme
 
-    oyé +=1
-    print(oyé)
+#la queue en pont = 4 pts blanc
 
 
 
-#trouve un autre truk c trop long
 
 
-#ok c impossible c tj pas fini alors pour 25 images c mort, bon ben chai pas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
 
 
 
