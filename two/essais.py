@@ -5,7 +5,7 @@ import shutil
 from conteneur_de_liste import *
 import numpy as np
 from PIL import Image, ImageDraw, ImageChops
-
+import time
 
 
 
@@ -24,20 +24,22 @@ class yo :
                    
                     occurence.append((x,y))
 
-        im[7,104] = 255,0,255
-        im[7,105] = 255,0,255
-        im[7,106] = 255,0,255
-        im[7,107] = 255,0,255
-        cv2.imshow("ypo.jpg", im)
+        im[47,106] = 0,0,255
+        im[47,107] = 0,0,255
+        im[47,110] = 0,0,255
+        im[47,127] = 0,0,255
+
+        
+        #cv2.imshow("ypo.jpg", im)
         return occurence
 
 
 
 
 
-
-    def grigri(self, truk):
+    def grigri(self, truk, image):
         self.truk = truk
+        self.image = image
         
         a=conteneur.conteneur(self)
                 
@@ -51,23 +53,28 @@ class yo :
 
         for i in liste[0]:
             try:
+                a[1][rangée].append(i)
                 if liste[0][x][0] != liste[0][x+1][0]:
                     rangée+=1
             
-                a[1][rangée].append(i)
             except:
                 pass
             finally:
                 x+=1
                
-            
-
-        print(a[1][0])
-        print(a[1][1])  
-
-
-
-
+        im = cv2.imread(self.image)
+        c = 0
+        for i in a[1][24]:
+            if i == []:
+                pass
+            else:
+                print(i)
+                print(len(a[1][5]))
+                im[i[0], i[1]] = 0,0,255
+                c+=1
+        
+        cv2.imshow("image.jpg", im)
+        #if y est a coté on compte pas !
 
 
 
@@ -85,23 +92,16 @@ if __name__ == "__main__":
 
 
     yo = yo()
-   
+
     os.chdir(r"C:\Users\jeanbaptiste\coatis\edge1")
     liste_dossier = os.listdir()
 
 
 
     pos_im=yo.recup_pixel(liste_dossier[0])
-    yo.grigri(pos_im)
+    yo.grigri(pos_im,liste_dossier[0])
 
 
-#soit tu prends la premier pos et ensuite tu cherches liaison par fraction
-
-#soit tu cherches la queue cad une droite mais y'a pas toujours
-
-#soit tu cherches le pont mais c pas tj le meme
-
-#la queue en pont = 4 pts blanc
 
 
 
