@@ -24,10 +24,7 @@ class yo :
                    
                     occurence.append((x,y))
 
-        im[47,106] = 0,0,255
-        im[47,107] = 0,0,255
-        im[47,110] = 0,0,255
-        im[47,127] = 0,0,255
+
 
         
         #cv2.imshow("ypo.jpg", im)
@@ -89,7 +86,7 @@ class yo :
                     im[x,y] = 0,0,0
 
         
-        cv2.imshow("image.jpg", im_recup)
+
         cv2.imwrite("recup2.png", im)
         shutil.move("recup2.png", r"C:\Users\jeanbaptiste\coatis")
 
@@ -109,7 +106,42 @@ class yo :
                         im[x,y] = 0,0,0
                 except:
                     pass
-        cv2.imwrite("recup2.jpg", im)
+        cv2.imwrite("recup2.png", im)
+
+
+    def zone_rouge(self):
+
+        liste_x = []
+        liste_y = []
+
+        
+        im = cv2.imread("recup2.png")
+        for x in range(im.shape[0]):
+            for y in range(im.shape[1]):
+                if im[x,y][0] == 0 and im[x,y][1] == 0 and im[x,y][2] == 255:
+
+                    liste_x.append(x)
+                    liste_y.append(y)
+
+        max_x = max(liste_x)
+        min_x = min(liste_x)
+
+        max_y = max(liste_y)
+        min_y = min(liste_y)
+
+        print(max_x, max_y)
+
+        
+        for x in range(im.shape[0]):
+            for y in range(im.shape[1]):
+             
+                if x > max_x:
+                    im[x,y] = 0,0,0
+
+      
+        cv2.imwrite("recup3.png", im)
+
+    def dodo       
 
 if __name__ == "__main__":
     
@@ -124,7 +156,7 @@ if __name__ == "__main__":
     pos_im=yo.recup_pixel(liste_dossier[0])
     yo.grigri(pos_im,liste_dossier[0])
     yo.obtenir_pts_blanc()
-
+    yo.zone_rouge()
 
 #bon a la base je voulais ca mais je comprend pas comment ca se fait qu'il est 4 petit pts blanc au milieu voir si ca marche
 #avec toutes les images... et pk y'a des pts blanc qu ireste
