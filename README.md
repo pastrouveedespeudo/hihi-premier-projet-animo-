@@ -1,6 +1,8 @@
 # hihi-premier-projet-animo-
 
-#rajoute les matches couleurs et puis c pas moi qui testerai au pire ^^
+#rajoute les matches couleurs et puis c pas moi qui testerai au pire ^^ rajoute une autre fonction qui dis que c enface du trait rouge
+
+#rajoute forme de l de différentes tailles
 
 
 
