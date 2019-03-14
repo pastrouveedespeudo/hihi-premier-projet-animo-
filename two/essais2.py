@@ -33,8 +33,9 @@ class essais2:
                     liste[1][c].append((x,y))
             c+=1
 
-        print(liste[1])
+
         return liste[1]
+
 
     def liste(self, liste):
         liste_x = conteneur.conteneur(self)
@@ -54,7 +55,7 @@ class essais2:
 
         compteur = 0
         for cle, valeur in counter.items():
-            if valeur > 4:
+            if valeur > 6:
                 liste_x[2][compteur].append(cle)
                 compteur +=1
 
@@ -65,7 +66,7 @@ class essais2:
     def traitement_liste(self, liste, liste2, image):
         liste_x = conteneur.conteneur(self)
         self.image = image
-        
+        print(liste_x)
         im = cv2.imread(self.image)
         self.liste2 = liste2
         self.liste = liste
@@ -88,7 +89,107 @@ class essais2:
                             liste_x[3][c1].append(j)
                             c1+=1
 
-        print(liste_x[3])
+  
+
+        for pix in liste_x[3]:
+            if pix == []:
+                pass
+            else:
+        
+                print("nous dessinons :", pix[0][0], pix[0][1])
+                im[pix[0][0], pix[0][1]] = 0,0,255
+                        
+
+        cv2.imwrite("coucou.png", im)
+
+
+
+        c=0
+        #on cherche le bout de la queue
+        for x in range(im.shape[0]):
+            for y in range(im.shape[1]):
+                
+                if im[x,y][0] == 255 and\
+                   im[x,y][1] == 255 and\
+                   im[x,y][2] == 255 and\
+                   im[x+1,y][0] == 255 and\
+                   im[x+1,y][1] == 255 and\
+                   im[x+1,y][2] == 255 and\
+                   im[x+2,y][0] == 255 and\
+                   im[x+2,y][1] == 255 and\
+                   im[x+2,y][2] == 255 and\
+                   im[x+2,y-1][0] == 255 and\
+                   im[x+2,y-1][1] == 255 and\
+                   im[x+2,y-1][2] == 255 and\
+                   im[x+2,y-2][0] == 255 and\
+                   im[x+2,y-2][1] == 255 and\
+                   im[x+2,y-2][2] == 255 and\
+                   im[x+2,y-3][0] == 255 and\
+                   im[x+2,y-3][1] == 255 and\
+                   im[x+2,y-3][2] == 255:
+                    print("queue")
+                elif im[x,y][0] == 255 and\
+                    im[x,y][1] == 255 and\
+                    im[x,y][2] == 255 and\
+                    im[x,y+1][0] == 255 and\
+                    im[x,y+1][1] == 255 and\
+                    im[x,y+1][2] == 255 and\
+                    im[x,y+2][0] == 255 and\
+                    im[x,y+2][1] == 255 and\
+                    im[x,y+1][2] == 255 and\
+                    im[x,y+3][0] == 255 and\
+                    im[x,y+3][1] == 255 and\
+                    im[x,y+3][2] == 255 and\
+                    im[x-1,y+3][0] == 255 and\
+                    im[x-1,y+3][1] == 255 and\
+                    im[x-1,y+3][2] == 255 and\
+                    im[x-2,y+3][0] == 255 and\
+                    im[x-2,y+3][1] == 255 and\
+                    im[x-2,y+3][2] == 255 and\
+                    im[x-3,y+3][0] == 255 and\
+                    im[x-3,y+3][1] == 255 and\
+                    im[x-3,y+3][2] == 255:
+ 
+                       print("bout de queue!!!!!!!!!!!!!!!!!!!!!!")
+
+
+                elif im[x,y].all() == np.array([255,255,255]).all() and\
+                     im[x+1,y].all() == np.array([255,255,255]).all() and\
+                     im[x+2,y].all() == np.array([255,255,255]).all() and\
+                     im[x+2,y-1].all() == np.array([255,255,255]).all() and\
+                     im[x+2,y-2].all() == np.array([255,255,255]).all() and\
+                     im[x+2,y-3].all() == np.array([255,255,255]).all():
+
+                        print("queuuue")
+        print("coucou")
+##                   elif im[x,y][0] == 255 and\
+##                   im[x,y][1] == 255 and\
+##                   im[x,y][2] == 255 and\
+##                   
+##                   im[x,y][0] == 255 and\
+##                   im[x,y][1] == 255 and\
+##                   im[x,y][2] == 255 and\
+##                   
+##                   im[x,y][0] == 255 and\
+##                   im[x,y][1] == 255 and\
+##                   im[x,y][2] == 255 and\
+##                   
+##                   im[x,y][0] == 255 and\
+##                   im[x,y][1] == 255 and\
+##                   im[x,y][2] == 255 and\
+##                   
+##                   im[x,y][0] == 255 and\
+##                   im[x,y][1] == 255 and\
+##                   im[x,y][2] == 255 and\
+##                   
+##                   im[x,y][0] == 255 and\
+##                   im[x,y][1] == 255 and\
+##                   im[x,y][2] == 255 and\
+##                   
+##                   im[x,y][0] == 255 and\
+##                   im[x,y][1] == 255 and\
+##                   im[x,y][2] == 255 and\
+ 
 
 
 
@@ -99,31 +200,9 @@ class essais2:
 
 
 
-##
-##
-##                print("c'est rangées possèdent une droite")
-##                print(liste2[i[0]])
-##                for pix in liste2[i[0]]:
-##                    print("nous dessinons :", pix)
-##                    print(pix[0])
-##                    im[pix[0], pix[1]] = 0,0,255
-##                    
-##
-##            c+=1
-##
-##        im[10,10] = 255,0,255
-##        im[13,10] = 255,0,255
-##        im[16,10] = 255,0,255
-##        im[19,10] = 255,0,255
-##        im[21,10] = 255,0,255
-##        cv2.imwrite("coucou.png", im)
-##
+                   
 
-
-
-
-
-
+        cv2.imwrite("coucou.png", im)
 
 
 if __name__ == "__main__":
@@ -138,6 +217,60 @@ if __name__ == "__main__":
     liste = essais2.droite(path1, image)
     liste2 = essais2.liste(liste)
     essais2.traitement_liste(liste2, liste, image)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
