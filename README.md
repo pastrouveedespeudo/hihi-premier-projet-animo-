@@ -1,6 +1,6 @@
 # hihi-premier-projet-animo-
 
-#essais = 4 pts mais... je sais pas si c bien on peut le combo avec le truk de taleur
+#rajoute les matches couleurs et puis c pas moi qui testerai au pire ^^
 
 
 
