@@ -8,6 +8,11 @@ from PIL import Image, ImageDraw, ImageChops
 import time
 from collections import Counter
 
+
+
+
+POIDS = []
+
 class essais2:
 
     def droite(self, path, image):
@@ -54,12 +59,16 @@ class essais2:
 
 
         compteur = 0
+        ok = ""
         for cle, valeur in counter.items():
             if valeur > 6:
                 liste_x[2][compteur].append(cle)
                 compteur +=1
+                ok = True
 
-
+                
+        if ok == True:
+            POIDS.append(2)
         return liste_x[2]
 
         
@@ -103,57 +112,13 @@ class essais2:
         cv2.imwrite("coucou.png", im)
 
 
-
+        ok = ""
         c=0
         #on cherche le bout de la queue
-        for x in range(im.shape[0]):
-            for y in range(im.shape[1]):
+        for x in range(im.shape[0]-3):
+            for y in range(im.shape[1]-3):
                 
-                if im[x,y][0] == 255 and\
-                   im[x,y][1] == 255 and\
-                   im[x,y][2] == 255 and\
-                   im[x+1,y][0] == 255 and\
-                   im[x+1,y][1] == 255 and\
-                   im[x+1,y][2] == 255 and\
-                   im[x+2,y][0] == 255 and\
-                   im[x+2,y][1] == 255 and\
-                   im[x+2,y][2] == 255 and\
-                   im[x+2,y-1][0] == 255 and\
-                   im[x+2,y-1][1] == 255 and\
-                   im[x+2,y-1][2] == 255 and\
-                   im[x+2,y-2][0] == 255 and\
-                   im[x+2,y-2][1] == 255 and\
-                   im[x+2,y-2][2] == 255 and\
-                   im[x+2,y-3][0] == 255 and\
-                   im[x+2,y-3][1] == 255 and\
-                   im[x+2,y-3][2] == 255:
-                    print("queue")
-                elif im[x,y][0] == 255 and\
-                    im[x,y][1] == 255 and\
-                    im[x,y][2] == 255 and\
-                    im[x,y+1][0] == 255 and\
-                    im[x,y+1][1] == 255 and\
-                    im[x,y+1][2] == 255 and\
-                    im[x,y+2][0] == 255 and\
-                    im[x,y+2][1] == 255 and\
-                    im[x,y+1][2] == 255 and\
-                    im[x,y+3][0] == 255 and\
-                    im[x,y+3][1] == 255 and\
-                    im[x,y+3][2] == 255 and\
-                    im[x-1,y+3][0] == 255 and\
-                    im[x-1,y+3][1] == 255 and\
-                    im[x-1,y+3][2] == 255 and\
-                    im[x-2,y+3][0] == 255 and\
-                    im[x-2,y+3][1] == 255 and\
-                    im[x-2,y+3][2] == 255 and\
-                    im[x-3,y+3][0] == 255 and\
-                    im[x-3,y+3][1] == 255 and\
-                    im[x-3,y+3][2] == 255:
- 
-                       print("bout de queue!!!!!!!!!!!!!!!!!!!!!!")
-
-
-                elif im[x,y].all() == np.array([255,255,255]).all() and\
+                if im[x,y].all() == np.array([255,255,255]).all() and\
                      im[x+1,y].all() == np.array([255,255,255]).all() and\
                      im[x+2,y].all() == np.array([255,255,255]).all() and\
                      im[x+2,y-1].all() == np.array([255,255,255]).all() and\
@@ -161,48 +126,12 @@ class essais2:
                      im[x+2,y-3].all() == np.array([255,255,255]).all():
 
                         print("queuuue")
-        print("coucou")
-##                   elif im[x,y][0] == 255 and\
-##                   im[x,y][1] == 255 and\
-##                   im[x,y][2] == 255 and\
-##                   
-##                   im[x,y][0] == 255 and\
-##                   im[x,y][1] == 255 and\
-##                   im[x,y][2] == 255 and\
-##                   
-##                   im[x,y][0] == 255 and\
-##                   im[x,y][1] == 255 and\
-##                   im[x,y][2] == 255 and\
-##                   
-##                   im[x,y][0] == 255 and\
-##                   im[x,y][1] == 255 and\
-##                   im[x,y][2] == 255 and\
-##                   
-##                   im[x,y][0] == 255 and\
-##                   im[x,y][1] == 255 and\
-##                   im[x,y][2] == 255 and\
-##                   
-##                   im[x,y][0] == 255 and\
-##                   im[x,y][1] == 255 and\
-##                   im[x,y][2] == 255 and\
-##                   
-##                   im[x,y][0] == 255 and\
-##                   im[x,y][1] == 255 and\
-##                   im[x,y][2] == 255 and\
- 
+                        ok = True
 
-
-
-
-
-
-
-
-
-
-                   
 
         cv2.imwrite("coucou.png", im)
+        if ok == True:
+            POIDS.append(2)
 
 
 if __name__ == "__main__":
@@ -216,9 +145,16 @@ if __name__ == "__main__":
     essais2 = essais2()
     liste = essais2.droite(path1, image)
     liste2 = essais2.liste(liste)
-    essais2.traitement_liste(liste2, liste, image)
+    poids = essais2.traitement_liste(liste2, liste, image)
 
+    
+    pods = 0
+    for i in POIDS:
+        pods += i
 
+    print(pods)
+    if pods >= 4:
+        print("l'animal exprime de l'amitié")
 
 
 
