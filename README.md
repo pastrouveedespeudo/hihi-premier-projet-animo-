@@ -1,6 +1,8 @@
 # hihi-premier-projet-animo-
 
-#hiroku ca me les casses, et trouvé 4 points sur la meme ligne au lieu de dire trouvé toutes les relations d'une image afin de trouver un shéma récurrent c moins classe... par conte chui content du conteneur ca jvai le garder !!
+#essais = 4 pts mais... je sais pas si c bien on peut le combo avec le truk de taleur
+
+
 
 #les yeux
 
