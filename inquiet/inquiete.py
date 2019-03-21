@@ -55,31 +55,36 @@ class chercher_pts:
     def operation(cls, entree, entree2):
         cls.entree = entree
         cls.entree2 = entree2
-
+        a = 5
+        aa = 10
         a = cls.entree + 1
         aa = cls.entree2
 
-        b = a + 2
-        bb = aa
-
-        c = a + 2
-        cc = aa
-
-        d = c
+        bb = cc = aa
+        
+        b = c = d = e = f = a + 2
+    
         dd = aa -1
-
-        e = c
         ee = aa -2 
-
-        f = c
         ff = aa - 3
 
-        if a,aa,b,bb,c,cc,d,dd,e,ee,f,ff:
-            return True
-        else:
-            return False
 
 
+
+
+##        if a, aa,b,bb,c,cc,d,dd,e,ee,f,ff:
+##            return True
+##        else:
+##            return False
+
+
+        f = lambda i: i + 1
+        
+        ff = [f(5) for i in range(2)]
+        print(ff)
+        
+        for i in range(3):
+        print(-i)
         
 
     def pos_bout_de_queue(self):
@@ -147,6 +152,7 @@ if __name__ == "__main__":
     pts.centre_image(IMG_EDGE)
     liste_pts_blanc = pts.bout_de_queue(IMG_EDGE)
     pts.nos_pts(liste_pts_blanc)
+    pts.operation(1,2)
 
 
 
