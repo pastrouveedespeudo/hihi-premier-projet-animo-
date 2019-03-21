@@ -1,6 +1,6 @@
 import cv2
 from PIL import Image
-
+import numpy as np
 
 class image:
 
@@ -41,9 +41,8 @@ class chercher_pts:
 
         img = cv2.imread(self.image)
 
-        parcours_im = [(x,y) for x in range(img.shape[0]) for y in range(img.shape[1]) if img[x,y][0] == 255 and\
-                                                                         img[x,y][1] == 255 and\
-                                                                         img[x,y][2] == 255]
+        parcours_im = [(x,y) for x in range(img.shape[0]) for y in range(img.shape[1])\
+                       if img[x,y].all() == np.array([255,255,255]).all()]
 
         return parcours_im
         
