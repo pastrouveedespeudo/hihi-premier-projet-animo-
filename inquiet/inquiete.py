@@ -61,8 +61,7 @@ class chercher_pts:
         return parcours_im
 
 
-    def pts_blanc2(self, image):#faut reduire et mettre d'autre tailles  merde enfete je sais faire que crochet crochet instruction
-                                #C PAS DU TOUT COMME DANS LES SOLUCES pfffffff
+    def pts_blanc2(self, image):
         self.image = image
 
         img = cv2.imread("bbb.png")
@@ -75,7 +74,8 @@ class chercher_pts:
                        img[x+1,y+3].all() == np.array([255,255,255]).all()]
         
         print(parcours_im)
-
+        
+ 
         if parcours_im != []:
             return parcours_im, True
         
@@ -83,13 +83,31 @@ class chercher_pts:
 
 
 
+    def pos_bout_de_queue(self, size_im, temps1, temps2):
+        self.size_im = size_im
+        self.temps1 = temps1
+        self.temps2 = temps2
 
-    def pos_bout_de_queue(self):
-        pass
+        moitié = int(round(self.size_im[2] / 2))#ou math.ceil() mais 5.1 -> 6
 
+        if self.temps1[0] or self.temps2[0] < moitié and\
+           moitié > self.temps1[0] or self.temps2[0]:
+            return True
+        else:
+            return False
+        #le L a changé de place
    
     def pos_droite(self):
         pass
+
+
+
+
+
+
+
+
+
 
 
 
@@ -97,47 +115,38 @@ class chercher_pts:
         self.pts = pts
         self.save = save
 
-        im = cv2.imread(self.save)
-  
-        for i in self.pts:
-            x = i[0]
-            y = i[1]
-            try:
-                im[x,y] = 255,0,255
-                im[x+1,y] = 255,0,255
-                im[x+2,y] = 255,0,255
-                im[x+2,y-1] = 255,0,255
-                im[x+2,y-2] = 255,0,255
-                im[x+2,y-3] = 255,0,255
+        img = cv2.imread("traitement_image2.png")
 
-                #cv2.imwrite(self.save, im)
-            except:
-                print("pas de pts")
+        x = 26
+        y = 96
 
+        img[x,y] = 0,0,255
+        img[x+1,y] = 0,0,255
+        img[x+2,y] = 0,0,255
+        img[x+2,y+1] = 0,0,255
+        img[x+2,y-2] = 0,0,255
+        img[x+2,y-3] = 0,0,255
+        cv2.imwrite(self.save, img)
 
-##
-##       
-##        
-##        img[x,y] = 0,0,255
-##        img[x+1,y] = 0,0,255
-##        img[x+2,y] = 0,0,255
-##        img[x+2,y+1] = 0,0,255
-##        img[x+2,y+2] = 0,0,255
-##        img[x+2,y+3] = 0,0,255
+        
+    def dessin2(self, pts, save):
+        self.pts = pts
+        self.save = save
 
-
-
+        img = cv2.imread("traitement_image2.png")
+        x = 27
+        y=86
+        img[x,y] = 0,0,255
+        img[x+1,y] = 0,0,255
+        img[x+1,y+1] = 0,0,255
+        img[x+1,y+2] = 0,0,255
+        img[x+1,y+3] = 0,0,255
+        
+        img[x+1,y+3:y+30] = 0,0,255
 
 
 
-
-
-
-
-
-
-
-
+        cv2.imwrite(self.save, img)
 
 
 
@@ -175,15 +184,30 @@ if __name__ == "__main__":
     notre_pts1 = pts.pts_blanc(IMG_EDGE)
     notre_pts2 = pts.pts_blanc2(IMG_EDGE2)
     
-    pts.pos_bout_de_queue()
 
 
-    pts.dessin(notre_pts1,"traitement_image1.png")
-    pts.dessin(notre_pts2, "traitement_image2.png")
 
-    if notre_pts1[1] and notre_pts2[1] == True: #and ya une droite aux deux qui dont de par et dotre
-                                                        #du centre de limage
-        print("lanimal est inquiet !")
+    queue_a_changé_de_pos = pts.pos_bout_de_queue(hauteur_largeur,notre_pts1[0], notre_pts2[0])
+
+
+
+
+
+
+
+
+    #pts.dessin(notre_pts1,"traitement_image1.png")
+    #pts.dessin2(notre_pts1,"traitement_image1.png")
+
+
+
+
+
+    #if notre_pts1[1] and notre_pts2[1]  and queue_a_changé_de_pos == True:
+    
+    #and ya une droite aux deux qui dont de par et dotre
+    #du centre de limage
+     #    print("lanimal est inquiet !")
 
 
 
