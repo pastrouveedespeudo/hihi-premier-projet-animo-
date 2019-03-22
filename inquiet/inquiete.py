@@ -36,60 +36,50 @@ class chercher_pts:
         img = cv2.imread(self.image)
         centre_x = img.shape[0] / 2
 
-    def bout_de_queue(self, image):
+        largeur = img.shape[0]
+        hauteur = img.shape[1]
+
+        return centre_x, largeur, hauteur
+
+    def pts_blanc(self, image):
         self.image = image
 
         img = cv2.imread(self.image)
 
-        parcours_im = [(x,y) for x in range(img.shape[0]) for y in range(img.shape[1])\
-                       if img[x,y].all() == np.array([255,255,255]).all()]
+        parcours_im = [(x,y) for x in range(img.shape[0]-3) for y in range(img.shape[1]-3)\
+                       if img[x,y].all() == np.array([255,255,255]).all() and\
+                       img[x+1,y].all() == np.array([255,255,255]).all() and\
+                       img[x+2,y].all() == np.array([255,255,255]).all() and\
+                       img[x+2,y-1].all() == np.array([255,255,255]).all() and\
+                       img[x+2,y-2].all() == np.array([255,255,255]).all() and\
+                       img[x+2,y-3].all() == np.array([255,255,255]).all()]
+        print(parcours_im)
 
         return parcours_im
+
+
+            
+
+    def pos_bout_de_queue(self, pts):
+        self.pts = pts
+        im = cv2.imread("yo.png")
+        liste = []
         
-    def nos_pts(self,liste):
-        self.liste = liste
-        print(self.liste)
-        parcours_liste = [i for i in self.liste if i[0] + 1 and i[1]]
-
-    @classmethod
-    def operation(cls, entree, entree2):
-        cls.entree = entree
-        cls.entree2 = entree2
-        a = 5
-        aa = 10
-        a = cls.entree + 1
-        aa = cls.entree2
-
-        bb = cc = aa
+        for i in liste:
+      
+            im[i[0], i[1]] = 0,255,255
+        x=26
+        y = 96
+        im[x,y] = 255,0,255
         
-        b = c = d = e = f = a + 2
-    
-        dd = aa -1
-        ee = aa -2 
-        ff = aa - 3
-
-
-
-
-
-##        if a, aa,b,bb,c,cc,d,dd,e,ee,f,ff:
-##            return True
-##        else:
-##            return False
-
-
-        f = lambda i: i + 1
+        im[x+1,y] = 255,0,255
         
-        ff = [f(5) for i in range(2)]
-        print(ff)
-        
-        for i in range(3):
-        print(-i)
-        
-
-    def pos_bout_de_queue(self):
-        pass
-
+        im[x+2,y] = 255,0,255
+        im[x+2,y-1] = 255,0,255
+        im[x+2,y-2] = 255,0,255
+        im[x+2,y-3] = 255,0,255
+        cv2.imshow("yo.png", im)
+        cv2.imwrite("ya.png", im)
     def pos_droite(self):
         pass
 
@@ -149,11 +139,11 @@ if __name__ == "__main__":
 
 
     pts = chercher_pts()
-    pts.centre_image(IMG_EDGE)
-    liste_pts_blanc = pts.bout_de_queue(IMG_EDGE)
-    pts.nos_pts(liste_pts_blanc)
-    pts.operation(1,2)
-
+    
+    hauteur_largeur = pts.centre_image(IMG_EDGE)
+    notre_pts = liste_pts_blanc = pts.pts_blanc(IMG_EDGE)
+    
+    pts.pos_bout_de_queue(notre_pts)
 
 
 
