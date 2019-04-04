@@ -5,6 +5,8 @@
 
 #ensuite on faut faire un truk qui localise le carre si c entre les deux pattes (patte sol) alors le truk veut pas se battre, on regarde la queue, on dit si ca pointe vers dautre koali en fond alors amitié jcroyais qu'on devait coder sois meme laarcascade... par contre ca ram
 
+#putin de merde ca debloque pleins de truk 
+
 
 #chercher la droite et si le bout de la queue est enface du de la droite + les autres truks alors il est inquiet 
 
