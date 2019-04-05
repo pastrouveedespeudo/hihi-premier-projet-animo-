@@ -1,10 +1,6 @@
 # hihi-premier-projet-animo-
 
-#ca marche pas struk de merde serieux 
+#faire le museau ca marchera ca et faire un triangle pour repérer les yeux regarder le triangle s'i lbouge de haut en bas
 
-#faire les pattes mtn... et c meme pas sur que ca marche mait 100 images + les néatives ca prend trop de temps
-
-#le museau, pos la queue, pos les pattes, le corps koali en fond
-
-#faire pour les queues a droite et a  gauche avec differentes couleurs
+#faire les oreilles ca marchera et normalement deux rond noir sur le trait des oreille au nez 
 
